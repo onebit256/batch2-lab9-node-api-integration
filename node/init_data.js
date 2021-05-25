@@ -1,13 +1,21 @@
 const db = require ('./dbconnectors/sqlite-connector') // you need the connection to the database and Campus model
+const bycrypt = require('bcryptjs')
 
 const seed = async () => {
-  await db.sequelize.sync({force: true}) //sync to your database!
+  console.log("123");
 
+  await db.sequelize.sync({force: true}) //sync to your database!
+  console.log("123");
+
+  const salt = await bycrypt.genSalt(10);
+  hashpassword = await bycrypt.hash("123456", salt)
+  console.log(hashpassword);
   const harvard = await db.user.create({
     name: 'Harvard',
-    email: 'PO Box 382609. Cambridge, MA 02238-2609.',
-    password: 'World famous Ivy League university'
+    email: '123456@qq.com',
+    password: hashpassword
   })
+  console.log(harvard);
   const stonybrook = await db.user.create({
     name: 'Stony Brook University',
     email:'100 Nicolls Rd, Stony Brook, NY 11794',

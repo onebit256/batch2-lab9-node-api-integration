@@ -27,9 +27,9 @@ app.use(bodyparser.json())
 app.get('/test', function(req,res){
   res.send('Hello world')
 })
-app.use('/',(req,res=>{
-	res.sendFile(path.join(__dirname, "../react-batch2-class/build/index.html"))
-}))
+// app.use('/',(req,res)=>{
+// 	res.sendFile(path.join(__dirname, "../react-batch2-class/build/index.html"))
+// })
 app.use('/account/api',router)
 
 //Server 
